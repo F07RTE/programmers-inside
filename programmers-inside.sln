@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.5.002.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgrammersInsideWeb", "ProgrammersInsideWeb\ProgrammersInsideWeb.csproj", "{3C13B2BF-28D5-4B98-AA28-C70BFD099BCF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ProgrammersInside.Web", "ProgrammersInside.Web\ProgrammersInside.Web.csproj", "{3C13B2BF-28D5-4B98-AA28-C70BFD099BCF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
