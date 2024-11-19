@@ -2,25 +2,22 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ProgrammersInside.Data;
+using ProgrammersInside.Web.Database;
 
 #nullable disable
 
-namespace ProgrammersInside.Data.Migrations
+namespace ProgrammersInside.Web.Migrations
 {
     [DbContext(typeof(ProgrammersInsideContext))]
-    [Migration("20241119100108_TestMigration")]
-    partial class TestMigration
+    partial class ProgrammersInsideContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
 
-            modelBuilder.Entity("ProgrammersInside.Data.Dmos.User", b =>
+            modelBuilder.Entity("ProgrammersInside.Web.Core.Models.User", b =>
                 {
                     b.Property<long>("Id")
                         .ValueGeneratedOnAdd()
