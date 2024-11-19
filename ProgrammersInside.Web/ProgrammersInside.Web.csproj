@@ -20,7 +20,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Database/DatabaseFile/" />
+    <Folder Include="wwwroot/Content/" />
+    <Folder Include="wwwroot/Content/Data/" />
   </ItemGroup>
 
 </Project>

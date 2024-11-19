@@ -8,7 +8,7 @@ public class ProgrammersInsideContext : DbContext
     public DbSet<User> Users {get; set;} = null!;
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder){
-        optionsBuilder.UseSqlite("Data Source=Database/DatabaseFile/ProgrammersInside.db");
+        optionsBuilder.UseSqlite("Data Source=wwwroot/Content/Data/ProgrammersInside.db");
 
         base.OnConfiguring(optionsBuilder);
     }
