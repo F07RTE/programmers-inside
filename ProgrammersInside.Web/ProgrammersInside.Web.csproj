@@ -22,6 +22,7 @@
   <ItemGroup>
     <Folder Include="wwwroot/Content/" />
     <Folder Include="wwwroot/Content/Data/" />
+    <Folder Include="wwwroot/images/" />
   </ItemGroup>
 
 </Project>
