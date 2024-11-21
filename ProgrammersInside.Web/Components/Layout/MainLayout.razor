@@ -5,7 +5,18 @@
 <MudDialogProvider/>
 <MudSnackbarProvider/>
 
-@Body
+<!-- Provisório -->
+<MudLayout>
+    <MudAppBar Position="AppBarPosition.Top">
+        <MudButton Href="/" Color="Color.Primary" Variant="Variant.Filled" Class="mr-4">Home</MudButton>
+        <MudButton Href="/login" Color="Color.Primary" Variant="Variant.Filled" Class="mr-4">Login</MudButton>
+        <MudButton Href="/register" Color="Color.Primary" Variant="Variant.Filled" Class="mr-4">Register</MudButton>
+    </MudAppBar>
+
+    <MudMainContent>
+        @Body
+    </MudMainContent>
+</MudLayout>
 
 <div id="blazor-error-ui">
     An unhandled error has occurred.
