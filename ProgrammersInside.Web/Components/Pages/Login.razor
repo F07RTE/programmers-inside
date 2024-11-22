@@ -25,7 +25,7 @@
                     AdornmentAriaLabel="Show Password"/>
             </MudPaper>
             <MudPaper Class="d-flex pa-4" Elevation="0">
-                @* <MudButton FullWidth="true" Color="Color.Success" Variant="Variant.Filled" OnClick="SignIn">Login</MudButton> *@
+                <MudButton FullWidth="true" Color="Color.Success" Variant="Variant.Filled" OnClick="SignIn">Login</MudButton>
             </MudPaper>
         </MudItem>
     </MudGrid>
@@ -38,36 +38,3 @@
             </MudItem>
         </MudGrid>
     }
-
-@code {
-    
-    [Inject] private NavigationManager NavigationManager { get; set; } = null!;
-
-    private string Email { get; set; } = string.Empty;
-    private string Password { get; set; } = string.Empty;
-    private bool IsPasswordShow { get; set; }
-    private InputType PasswordInput { get; set; } = InputType.Password;
-    private string PasswordInputIcon { get; set; } = Icons.Material.Filled.VisibilityOff;
-    private string Error { get; set; } = string.Empty;
-
-    private void ShowPassword()
-    {
-        if (IsPasswordShow)
-        {
-            IsPasswordShow = false;
-            PasswordInputIcon = Icons.Material.Filled.VisibilityOff;
-            PasswordInput = InputType.Password;
-        }
-        else
-        {
-            IsPasswordShow = true;
-            PasswordInputIcon = Icons.Material.Filled.Visibility;
-            PasswordInput = InputType.Text;
-        }
-    }
-
-    @* private async Task SignIn(MouseEventArgs args)
-    {
-
-    } *@
-}

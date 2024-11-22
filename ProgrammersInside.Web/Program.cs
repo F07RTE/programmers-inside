@@ -1,5 +1,7 @@
 using ProgrammersInside.Web.Components;
 using MudBlazor.Services;
+using ProgrammersInside.Web.Database;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -10,7 +12,14 @@ builder.Services.AddRazorComponents()
 // Add Mud Blazor
 builder.Services.AddMudServices();
 
+builder.Services.AddDbContext<ProgrammersInsideContext>(options => 
+                            options.UseSqlite("Data Source=wwwroot/Content/Data/ProgrammersInside.db"));
+
 var app = builder.Build();
+
+using var scope = app.Services.CreateScope();
+await using var dbContext = scope.ServiceProvider.GetRequiredService<ProgrammersInsideContext>();
+await dbContext.Database.MigrateAsync();
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
