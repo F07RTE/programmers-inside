@@ -2,6 +2,7 @@ using ProgrammersInside.Web.Components;
 using MudBlazor.Services;
 using ProgrammersInside.Web.Database;
 using Microsoft.EntityFrameworkCore;
+using ProgrammersInside.Web.Core;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +15,9 @@ builder.Services.AddMudServices();
 
 builder.Services.AddDbContext<ProgrammersInsideContext>(options => 
                             options.UseSqlite("Data Source=wwwroot/Content/Data/ProgrammersInside.db"));
+
+builder.Services.AddProgrammersInsideCoreDependencyConfig();
+builder.Services.AddProgrammersInsideDataDependencyConfig();
 
 var app = builder.Build();
 

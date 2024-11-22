@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using ProgrammersInside.Web.Core.Models;
+using ProgrammersInside.Web.Core.UserContext.Models;
 
 namespace ProgrammersInside.Web.Database;
 
