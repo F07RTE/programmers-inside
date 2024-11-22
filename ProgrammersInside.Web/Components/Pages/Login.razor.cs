@@ -4,7 +4,7 @@ using MudBlazor;
 
 namespace ProgrammersInside.Web.Components.Pages
 {
-    public partial class Login: ComponentBase
+    public partial class Login : ComponentBase
     {
         [Inject] private NavigationManager NavigationManager { get; set; } = null!;
 
@@ -33,7 +33,8 @@ namespace ProgrammersInside.Web.Components.Pages
 
         private void SignIn()
         {
-            Console.WriteLine("Test");
+            // TODO: call Back-End logic
+
             NavigationManager.NavigateTo("/home");
         }
     }

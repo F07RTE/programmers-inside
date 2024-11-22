@@ -11,7 +11,7 @@
     <MudGrid Justify="Justify.Center">
         <MudItem xs="12" sm="6" md="5" lg="5">
             <MudPaper Class="d-flex pa-1" Elevation="0">
-                <MudTextField Label="Email" Variant="Variant.Outlined"  @bind-Value="Email"/>
+                <MudTextField Label="Email" Variant="Variant.Outlined" @bind-Value="Email"/>
             </MudPaper>
             <MudPaper Class="d-flex pa-1" Elevation="0">
                 <MudTextField
@@ -25,7 +25,7 @@
                     AdornmentAriaLabel="Show Password"/>
             </MudPaper>
             <MudPaper Class="d-flex pa-4" Elevation="0">
-                <MudButton FullWidth="true" Color="Color.Success" Variant="Variant.Filled" OnClick="SignIn">Login</MudButton>
+                <MudButton FullWidth="true" Color="Color.Success" Variant="Variant.Filled" @onclick="() => SignIn()">Login</MudButton>
             </MudPaper>
         </MudItem>
     </MudGrid>
