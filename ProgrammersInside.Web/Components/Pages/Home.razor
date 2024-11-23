@@ -1,10 +1,20 @@
 ﻿@page "/home"
 
-<MudContainer>
-
 <PageTitle>Home</PageTitle>
 
-<MudText Typo="Typo.h3">Welcome to programmers inside</MudText>
-<MudText Typo="Typo.h4">This website is in construction...</MudText>
+<MudContainer>
+
+    <MudText Typo="Typo.h3">Welcome to programmers inside</MudText>
+    <MudText Typo="Typo.h4">This website is in construction...</MudText>
+
+    <MudText Typo="Typo.h3">User list:</MudText>
+
+    @if(users != null)
+    {
+        @foreach(var user in users)
+        {
+            <MudText Typo="Typo.h5">@user.Name</MudText>
+        }
+    }
 
 </MudContainer>
