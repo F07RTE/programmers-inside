@@ -1,6 +1,8 @@
 ﻿@page "/"
 
- <MudGrid Justify="Justify.Center">
+<PageTitle>Login</PageTitle>
+
+<MudGrid Justify="Justify.Center">
         <MudItem xs="12" sm="6" md="5" lg="5">
             <MudPaper Class="d-flex justify-center flex-grow-1 gap-4" Elevation="0">
                 <MudImage Src="images/ProgrammersInside.png" Width="270" Height="270" Elevation="0" Class="rounded-lg"/>
@@ -8,33 +10,30 @@
         </MudItem>
     </MudGrid>
 
-    <MudGrid Justify="Justify.Center">
-        <MudItem xs="12" sm="6" md="5" lg="5">
-            <MudPaper Class="d-flex pa-1" Elevation="0">
-                <MudTextField Label="Email" Variant="Variant.Outlined" @bind-Value="Email"/>
-            </MudPaper>
-            <MudPaper Class="d-flex pa-1" Elevation="0">
-                <MudTextField
-                    @bind-Value="Password"
-                    Label="Password"
-                    Variant="Variant.Outlined"
-                    InputType="@PasswordInput"
-                    Adornment="Adornment.End"
-                    AdornmentIcon="@PasswordInputIcon"
-                    OnAdornmentClick="ShowPassword"
-                    AdornmentAriaLabel="Show Password"/>
-            </MudPaper>
-            <MudPaper Class="d-flex pa-4" Elevation="0">
-                <MudButton FullWidth="true" Color="Color.Success" Variant="Variant.Filled" @onclick="() => SignIn()">Login</MudButton>
-            </MudPaper>
-        </MudItem>
-    </MudGrid>
-    
-    @if (!string.IsNullOrEmpty(Error))
-    {
-        <MudGrid Justify="Justify.Center" Class="mt-8">
-            <MudItem xs="12" sm="6" md="5" lg="5">
-                <MudAlert Severity="Severity.Error" Elevation="0" Icon="@Icons.Material.Filled.Error">@Error</MudAlert>
-            </MudItem>
-        </MudGrid>
-    }
+<MudGrid Justify="Justify.Center">
+    <MudItem xs="12" sm="6" md="5" lg="5">
+        <MudPaper Class="d-flex pa-1" Elevation="0">
+            <MudTextField Label="E-mail" Variant="Variant.Outlined" @bind-Value="Email"/>
+        </MudPaper>
+        <MudPaper Class="d-flex pa-1" Elevation="0">
+            <MudTextField
+                @bind-Value="Password"
+                Label="Senha"
+                Variant="Variant.Outlined"
+                InputType="@PasswordInput"
+                Adornment="Adornment.End"
+                AdornmentIcon="@PasswordInputIcon"
+                OnAdornmentClick="ShowPassword"
+                AdornmentAriaLabel="Show Password"/>
+        </MudPaper>
+
+        @if (!string.IsNullOrEmpty(Error))
+        {
+            <MudAlert Severity="Severity.Error" Elevation="0" Icon="@Icons.Material.Filled.Error">@Error</MudAlert>
+        }
+
+        <MudPaper Class="d-flex pa-4" Elevation="0">
+            <MudButton FullWidth="true" Color="Color.Success" Variant="Variant.Filled" @onclick="() => SignIn()">Acessar</MudButton>
+        </MudPaper>
+    </MudItem>
+</MudGrid>

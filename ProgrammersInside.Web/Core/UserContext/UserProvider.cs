@@ -17,4 +17,14 @@ public class UserProvider : IUserProvider
     {
         return _userRepository.GetUsers();
     }
+
+    public User? GetUser(string email)
+    {
+        return _userRepository.GetUser(email);
+    }
+
+    public void AddUser(User user)
+    {
+        _userRepository.AddUser(user);
+    }
 }

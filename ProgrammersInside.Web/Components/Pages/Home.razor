@@ -2,19 +2,26 @@
 
 <PageTitle>Home</PageTitle>
 
+<MudGrid Justify="Justify.Center">
+    <MudItem xs="12" sm="6" md="5" lg="5">
+        <MudPaper Class="d-flex justify-center flex-grow-1 gap-4" Elevation="0">
+            <MudImage Src="images/ProgrammersInside.png" Width="270" Height="270" Elevation="0" Class="rounded-lg"/>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
+
 <MudContainer>
-
-    <MudText Typo="Typo.h3">Welcome to programmers inside</MudText>
-    <MudText Typo="Typo.h4">This website is in construction...</MudText>
-
     <MudText Typo="Typo.h3">User list:</MudText>
 
-    @if(users != null)
+    @if(Users != null && Users.Count > 0)
     {
-        @foreach(var user in users)
+        @foreach(var user in Users)
         {
             <MudText Typo="Typo.h5">@user.Name</MudText>
         }
+    }else
+    {
+        <MudText Typo="Typo.h5">No users found</MudText>
     }
 
 </MudContainer>

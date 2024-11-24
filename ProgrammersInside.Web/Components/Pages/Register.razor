@@ -1,83 +1,74 @@
 ﻿@page "/register"
 
-<MudContainer>
+<PageTitle>Cadastro</PageTitle>
 
-<PageTitle>Home</PageTitle>
+<MudGrid Justify="Justify.Center">
+    <MudItem xs="12" sm="6" md="5" lg="5">
+        <MudPaper Class="d-flex justify-center flex-grow-1 gap-4" Elevation="0">
+            <MudImage Src="images/ProgrammersInside.png" Width="270" Height="270" Elevation="0" Class="rounded-lg"/>
+        </MudPaper>
+    </MudItem>
+</MudGrid>
 
-<MudText Typo="Typo.h3">Register page</MudText>
+<MudForm @ref="form">
+    <MudGrid Justify="Justify.Center">
+        <MudItem xs="12" sm="6" md="5" lg="5">
+            <MudPaper Class="d-flex pa-1" Elevation="0">
+                <MudTextField Label="E-mail" Variant="Variant.Outlined" @bind-Value="Email" Required="true" RequiredError="O e-mail é obrigatório"
+                              Validation="@(new EmailAddressAttribute() { ErrorMessage = "O e-mail deve ser válido" })"/>
+            </MudPaper>
 
-    <EditForm Model="@model" OnValidSubmit="OnValidSubmit">
-        <DataAnnotationsValidator />
-        <MudGrid>
-            <MudItem xs="12" sm="7">
-                <MudCard>
-                    <MudCardContent>
-                        <MudTextField Label="First name" HelperText="Max. 8 characters"
-                                      @bind-Value="model.Username" For="@(() => model.Username)" />
-                        <MudTextField Label="Email" Class="mt-3"
-                                      @bind-Value="model.Email" For="@(() => model.Email)" />
-                        <MudTextField Label="Password" HelperText="Choose a strong password" Class="mt-3"
-                                      @bind-Value="model.Password" For="@(() => model.Password)" InputType="InputType.Password" />
-                        <MudTextField Label="Password" HelperText="Repeat the password" Class="mt-3"
-                                      @bind-Value="model.Password2" For="@(() => model.Password2)" InputType="InputType.Password" />
-                    </MudCardContent>
-                    <MudCardActions>
-                        <MudButton ButtonType="ButtonType.Submit" Variant="Variant.Filled" Color="Color.Primary" Class="ml-auto">Register</MudButton>
-                    </MudCardActions>
-                </MudCard>
-            </MudItem>
-            <MudItem xs="12" sm="5">
-                <MudPaper Class="pa-4 mud-height-full">
-                    <MudText Typo="Typo.subtitle2">Validation Summary</MudText>
-                    @if (success)
+            <MudPaper Class="d-flex pa-1" Elevation="0">
+                <MudTextField
+                    Required="true" RequiredError="Senha é obrigatório"
+                    @bind-Value="Password"
+                    Label="Senha"
+                    Variant="Variant.Outlined"
+                    InputType="@PasswordInput"
+                    Adornment="Adornment.End"
+                    AdornmentIcon="@PasswordInputIcon"
+                    OnAdornmentClick="ShowPassword"
+                    AdornmentAriaLabel="Show Password"/>
+            </MudPaper>
+
+            <MudPaper Class="d-flex pa-1" Elevation="0">
+                <MudTextField Label="Nome" Variant="Variant.Outlined" @bind-Value="Name" Required="true" RequiredError="Nome é obrigatório"/>
+            </MudPaper>
+
+            <MudPaper Class="d-flex pa-1" Style="gap: 1rem" Elevation="0">
+                <MudDatePicker Label="Data de Nascimento" Variant="Variant.Outlined" Editable="true" @bind-Date="Dob" Required="true" RequiredError="Gênero é obrigatório" Mask="@(new DateMask("dd/MM/yyyy"))" DateFormat="dd/MM/yyyy"/>
+                <MudSelect Variant="Variant.Outlined" @bind-Value="Gender" Label="Gênero" Required="true" RequiredError="O e-mail é obrigatório">
+                    @foreach (var gender in GenderOptions)
                     {
-                        <MudText Color="Color.Success">Success</MudText>
+                        <MudSelectItem Value="gender">@gender</MudSelectItem>
                     }
-                    else
+                </MudSelect>
+            </MudPaper>
+
+            <MudPaper Class="d-flex pa-1" Style="gap: 1rem" Elevation="0">
+                <MudSelect Required="true" RequiredError="Este campo é obrigatório" Variant="Variant.Outlined" @bind-Value="PlayAt" Label="Onde você joga?">
+                    @foreach (var playAt in PlayAtOptions)
                     {
-                        <MudText Color="@Color.Error">
-                            <ValidationSummary />
-                        </MudText>
+                        <MudSelectItem Value="playAt">@playAt</MudSelectItem>
                     }
-                </MudPaper>
-            </MudItem>
-            <MudItem xs="12">
-                <MudText Typo="Typo.body2" Align="Align.Center">
-                    Fill out the form correctly to see the success message.
-                </MudText>
-            </MudItem>
-        </MudGrid>
-    </EditForm>
-    @code {
-        RegisterAccountForm model = new RegisterAccountForm();
-        bool success;
+                </MudSelect>
+                <MudSelect Required="true" RequiredError="Este campo é obrigatório" Variant="Variant.Outlined" @bind-Value="FavoriteGame" Label="Jogo Favorito">
+                    @foreach (var favoriteGame in FavoriteGameOptions)
+                    {
+                        <MudSelectItem Value="favoriteGame">@favoriteGame</MudSelectItem>
+                    }
+                </MudSelect>
+            </MudPaper>
 
-        public class RegisterAccountForm
-        {
-        [Required]
-        [StringLength(8, ErrorMessage = "Name length can't be more than 8.")]
-        public string Username { get; set; }
 
-        [Required]
-        [EmailAddress]
-        public string Email { get; set; }
+            @if (!string.IsNullOrEmpty(Error))
+            {
+                <MudAlert Severity="Severity.Error" Elevation="0" Icon="@Icons.Material.Filled.Error">@Error</MudAlert>
+            }
 
-        [Required]
-        [StringLength(30, ErrorMessage = "Password must be at least 8 characters long.", MinimumLength = 8)]
-        public string Password { get; set; }
-
-        [Required]
-        [Compare(nameof(Password))]
-        public string Password2 { get; set; }
-
-        }
-
-        private void OnValidSubmit(EditContext context)
-        {
-        success = true;
-        StateHasChanged();
-        }
-
-    }
-
-</MudContainer>
+            <MudPaper Class="d-flex pa-4" Elevation="0">
+                <MudButton FullWidth="true" Color="Color.Primary" Variant="Variant.Filled" @onclick="() => RegisterUser()">Cadastrar</MudButton>
+            </MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudForm>

@@ -9,19 +9,12 @@ namespace ProgrammersInside.Web.Components.Pages
     {
         [Inject] IUserProvider UserProvider {get; set;} = null!;
 
-        List<User> users {get; set;}
+        List<User> Users {get; set;}
 
         protected override void OnInitialized()
         {
-            users = new List<User>(){
-                new User{
-                    Name = "Test",
-                    Email = "test@test",
-                    Password = "test"
-                }
-            };
-            // TODO: call users from db when we have some data
-            //UserProvider.GetAllUsers();
+            
+            Users = UserProvider.GetAllUsers();
         }
     }
 }
