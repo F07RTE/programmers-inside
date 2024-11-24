@@ -12,6 +12,7 @@ builder.Services.AddRazorComponents()
 
 // Add Mud Blazor
 builder.Services.AddMudServices();
+builder.Services.AddMudBlazorSnackbar();
 
 builder.Services.AddDbContext<ProgrammersInsideContext>(options => 
                             options.UseSqlite("Data Source=wwwroot/Content/Data/ProgrammersInside.db"));

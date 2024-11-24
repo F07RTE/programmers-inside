@@ -1,24 +1,87 @@
 ﻿@inherits LayoutComponentBase
+@inject ISnackbar Snackbar
+@inject NavigationManager NavigationManager
 
-<MudThemeProvider/>
-<MudPopoverProvider/>
-<MudDialogProvider/>
-<MudSnackbarProvider/>
+<MudThemeProvider />
+<MudPopoverProvider />
+<MudDialogProvider />
+<MudSnackbarProvider />
 
-<!-- Provisório -->
-<MudLayout>
-    <MudAppBar Position="AppBarPosition.Top">
-        <MudButton Href="/home" Color="Color.Primary" Variant="Variant.Filled" Class="mr-4">Home</MudButton>
-        <MudButton Href="/register" Color="Color.Primary" Variant="Variant.Filled" Class="mr-4">Register</MudButton>
-    </MudAppBar>
+@if (IsPublicRoute())
+{
+    <!-- PUBLIC MENU -->
+    <MudLayout>
+        <MudAppBar Position="AppBarPosition.Top">
+            <MudButton Href="/" Color="Color.Primary" Variant="Variant.Filled" Class="mr-4">Home</MudButton>
+            <MudButton Href="/register" Color="Color.Primary" Variant="Variant.Filled" Class="mr-4">Register</MudButton>
+        </MudAppBar>
 
-    <MudMainContent>
-        @Body
-    </MudMainContent>
-</MudLayout>
+        <MudMainContent>
+            @Body
+        </MudMainContent>
+    </MudLayout>
+}
+else
+{
+    <!-- PRIVATE MENU -->
+    <MudLayout>
+        <MudGrid>
+            <!-- Menu Lateral -->
+            <MudItem xs="12" sm="3" md="2" lg="2">
+                <MudPaper Width="100%" Class="py-3" Elevation="0" Style="background-color: #030B13; height: 100vh;">
+                    <MudNavMenu Style="color: white;">
+
+                        <MudGrid Justify="Justify.Center">
+                            <MudItem xs="12" sm="6" md="5" lg="5">
+                                <MudPaper Class="d-flex justify-center flex-grow-1 gap-4" Elevation="0">
+                                    <MudImage Src="images/ProgrammersInside.png" Width="250" Height="125" Elevation="0" Class="rounded-lg" />
+                                </MudPaper>
+                            </MudItem>
+                        </MudGrid>
+
+                        <!-- Usuários -->
+                        <MudNavGroup Title="Usuários" Expanded="true">
+                            <MudNavLink Style="color: white !important;" Icon="@Icons.Material.Filled.PersonAdd">Cadastrar</MudNavLink>
+                            <MudNavLink Style="color: white !important;" Icon="@Icons.Material.Filled.Edit">Atualizar</MudNavLink>
+                            <MudNavLink Style="color: white !important;" Icon="@Icons.Material.Filled.Search">Consultar</MudNavLink>
+                            <MudNavLink Style="color: white !important;" Icon="@Icons.Material.Filled.Delete">Deletar</MudNavLink>
+                        </MudNavGroup>
+
+                        <!-- Relatórios -->
+                        <MudNavGroup Title="Relatórios" Expanded="true">
+                            <MudNavLink Icon="@Icons.Material.Filled.Assessment">Gerar</MudNavLink>
+                        </MudNavGroup>
+
+                        <!-- Conta -->
+                        <MudNavGroup Title="Conta" Expanded="true">
+                            <MudNavLink Icon="@Icons.Material.Filled.Person">Meu perfil</MudNavLink>
+                            <MudNavLink Href="/" Icon="@Icons.Material.Filled.ExitToApp">Sair</MudNavLink>
+                        </MudNavGroup>
+                    </MudNavMenu>
+                </MudPaper>
+            </MudItem>
+
+            <!-- Conteúdo Principal -->
+            <MudItem xs="12" sm="9" md="10" lg="10">
+                <MudMainContent Style="padding: 16px;">
+                    @Body
+                </MudMainContent>
+            </MudItem>
+        </MudGrid>
+    </MudLayout>
+}
 
 <div id="blazor-error-ui">
     An unhandled error has occurred.
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+@code {
+    private bool IsPublicRoute()
+    {
+        var currentUri = NavigationManager.Uri;
+
+        return currentUri.EndsWith("/") || currentUri.EndsWith("/register");
+    }
+}
