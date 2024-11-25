@@ -10,16 +10,8 @@
 @if (IsPublicRoute())
 {
     <!-- PUBLIC MENU -->
-    <MudLayout>
-        <MudAppBar Position="AppBarPosition.Top">
-            <MudButton Href="/" Color="Color.Primary" Variant="Variant.Filled" Class="mr-4">Login</MudButton>
-            <MudButton Href="/register" Color="Color.Primary" Variant="Variant.Filled" Class="mr-4">Cadastro</MudButton>
-        </MudAppBar>    
+    @Body
 
-        <MudMainContent>
-            @Body
-        </MudMainContent>
-    </MudLayout>
 }
 else
 {
@@ -41,7 +33,7 @@ else
 
                         <!-- Usuários -->
                         <MudNavGroup Title="Usuários" Expanded="true">
-                            <MudNavLink Style="color: white !important;" Icon="@Icons.Material.Filled.PersonAdd">Cadastrar</MudNavLink>
+                            <MudNavLink Href="/register" Style="color: white !important;" Icon="@Icons.Material.Filled.PersonAdd">Cadastrar</MudNavLink>
                             <MudNavLink Style="color: white !important;" Icon="@Icons.Material.Filled.Edit">Atualizar</MudNavLink>
                             <MudNavLink Style="color: white !important;" Icon="@Icons.Material.Filled.Search">Consultar</MudNavLink>
                             <MudNavLink Style="color: white !important;" Icon="@Icons.Material.Filled.Delete">Deletar</MudNavLink>

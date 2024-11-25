@@ -11,15 +11,30 @@
 </MudGrid>
 
 <MudContainer>
-    <MudText Typo="Typo.h3">User list:</MudText>
-
     @if(Users != null && Users.Count > 0)
     {
-        @foreach(var user in Users)
-        {
-            <MudText Typo="Typo.h5">@user.Name</MudText>
-        }
-    }else
+        <MudTable Items="Users" Hover="true" Breakpoint="Breakpoint.Sm" LoadingProgressColor="Color.Info">
+            <HeaderContent>
+                <MudTh>Id</MudTh>
+                <MudTh>Name</MudTh>
+                <MudTh>Email</MudTh>
+                <MudTh>Gender</MudTh>
+                <MudTh>Play At</MudTh>
+                <MudTh>Favorite Game</MudTh>
+                <MudTh>Date of Birth</MudTh>
+            </HeaderContent>
+            <RowTemplate>
+                <MudTd DataLabel="Id">@context.Id</MudTd>
+                <MudTd DataLabel="Name">@context.Name</MudTd>
+                <MudTd DataLabel="Email">@context.Email</MudTd>
+                <MudTd DataLabel="Gender">@context.Gender</MudTd>
+                <MudTd DataLabel="Play At">@context.PlayAt</MudTd>
+                <MudTd DataLabel="Favorite Game">@context.FavoriteGame</MudTd>
+                <MudTd DataLabel="Date Of Birth">@context.Dob.ToString("dd/M/yyyy").Substring(0, 10)</MudTd>
+            </RowTemplate>
+        </MudTable>
+    }
+    else
     {
         <MudText Typo="Typo.h5">No users found</MudText>
     }

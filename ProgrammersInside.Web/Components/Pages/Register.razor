@@ -2,14 +2,6 @@
 
 <PageTitle>Cadastro</PageTitle>
 
-<MudGrid Justify="Justify.Center">
-    <MudItem xs="12" sm="6" md="5" lg="5">
-        <MudPaper Class="d-flex justify-center flex-grow-1 gap-4" Elevation="0">
-            <MudImage Src="images/ProgrammersInside.png" Width="270" Height="270" Elevation="0" Class="rounded-lg"/>
-        </MudPaper>
-    </MudItem>
-</MudGrid>
-
 <MudForm @ref="form">
     <MudGrid Justify="Justify.Center">
         <MudItem xs="12" sm="6" md="5" lg="5">
@@ -66,8 +58,12 @@
                 <MudAlert Severity="Severity.Error" Elevation="0" Icon="@Icons.Material.Filled.Error">@Error</MudAlert>
             }
 
-            <MudPaper Class="d-flex pa-4" Elevation="0">
+            <MudPaper Class="d-flex pa-1" Elevation="0">
                 <MudButton FullWidth="true" Color="Color.Primary" Variant="Variant.Filled" @onclick="() => RegisterUser()">Cadastrar</MudButton>
+            </MudPaper>
+
+            <MudPaper Class="d-flex pa-1" Elevation="0">
+                <MudButton Href="/" FullWidth="true" Color="Color.Tertiary" Variant="Variant.Filled">Login</MudButton>
             </MudPaper>
         </MudItem>
     </MudGrid>
