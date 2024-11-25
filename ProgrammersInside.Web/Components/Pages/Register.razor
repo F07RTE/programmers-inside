@@ -36,7 +36,7 @@
             </MudPaper>
 
             <MudPaper Class="d-flex pa-1" Style="gap: 1rem" Elevation="0">
-                <MudDatePicker Label="Data de Nascimento" Variant="Variant.Outlined" Editable="true" @bind-Date="Dob" Required="true" RequiredError="Gênero é obrigatório" Mask="@(new DateMask("dd/MM/yyyy"))" DateFormat="dd/MM/yyyy"/>
+                <MudDatePicker Label="Data de Nascimento" Variant="Variant.Outlined" PickerVariant="PickerVariant.Dialog" Editable="true" @bind-Date="Dob" Required="true" RequiredError="Gênero é obrigatório" Mask="@(new DateMask("dd/MM/yyyy"))" DateFormat="dd/MM/yyyy"/>
                 <MudSelect Variant="Variant.Outlined" @bind-Value="Gender" Label="Gênero" Required="true" RequiredError="O e-mail é obrigatório">
                     @foreach (var gender in GenderOptions)
                     {
