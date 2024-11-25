@@ -5,34 +5,37 @@
 <MudGrid Justify="Justify.Center">
     <MudItem xs="12" sm="6" md="5" lg="5">
         <MudPaper Class="d-flex justify-center flex-grow-1 gap-4" Elevation="0">
-            <MudImage Src="images/ProgrammersInside.png" Width="270" Height="270" Elevation="0" Class="rounded-lg"/>
+            <MudImage Src="images/ProgrammersInside.png" Width="200" Height="200" Elevation="0" Class="rounded-lg"/>
         </MudPaper>
     </MudItem>
 </MudGrid>
 
+@* <MudPaper Class="d-flex flex-column overflow-x-auto " Height="100vh" Elevation="0"> *@
 <MudContainer>
     @if(Users != null && Users.Count > 0)
     {
-        <MudTable Items="Users" Hover="true" Breakpoint="Breakpoint.Sm" LoadingProgressColor="Color.Info">
-            <HeaderContent>
-                <MudTh>Id</MudTh>
-                <MudTh>Name</MudTh>
-                <MudTh>Email</MudTh>
-                <MudTh>Gender</MudTh>
-                <MudTh>Play At</MudTh>
-                <MudTh>Favorite Game</MudTh>
-                <MudTh>Date of Birth</MudTh>
-            </HeaderContent>
-            <RowTemplate>
-                <MudTd DataLabel="Id">@context.Id</MudTd>
-                <MudTd DataLabel="Name">@context.Name</MudTd>
-                <MudTd DataLabel="Email">@context.Email</MudTd>
-                <MudTd DataLabel="Gender">@context.Gender</MudTd>
-                <MudTd DataLabel="Play At">@context.PlayAt</MudTd>
-                <MudTd DataLabel="Favorite Game">@context.FavoriteGame</MudTd>
-                <MudTd DataLabel="Date Of Birth">@context.Dob</MudTd>
-            </RowTemplate>
-        </MudTable>
+        
+            <MudTable Items="Users" FixedHeader="true" Height="320px" Hover="true" Breakpoint="Breakpoint.Sm" LoadingProgressColor="Color.Info">
+                <HeaderContent>
+                    <MudTh>Id</MudTh>
+                    <MudTh>Name</MudTh>
+                    <MudTh>Email</MudTh>
+                    <MudTh>Gender</MudTh>
+                    <MudTh>Play At</MudTh>
+                    <MudTh>Favorite Game</MudTh>
+                    <MudTh>Date of Birth</MudTh>
+                </HeaderContent>
+                <RowTemplate>
+                    <MudTd DataLabel="Id">@context.Id</MudTd>
+                    <MudTd DataLabel="Name">@context.Name</MudTd>
+                    <MudTd DataLabel="Email">@context.Email</MudTd>
+                    <MudTd DataLabel="Gender">@context.Gender</MudTd>
+                    <MudTd DataLabel="Play At">@context.PlayAt</MudTd>
+                    <MudTd DataLabel="Favorite Game">@context.FavoriteGame</MudTd>
+                    <MudTd DataLabel="Date Of Birth">@context.Dob</MudTd>
+                </RowTemplate>
+            </MudTable>
+
     }
     else
     {
@@ -40,3 +43,4 @@
     }
 
 </MudContainer>
+@* </MudPaper> *@
